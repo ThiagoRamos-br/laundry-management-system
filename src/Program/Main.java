@@ -1,15 +1,77 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package Program;
+
+import entities.Client;
+import entities.PieceValue;
+import entities.Product;
+import entities.Service;
+import enums.laundryServices;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner sc = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("Laundry customer registration");
+        System.out.println();
+
+        System.out.println("===Client===");
+        System.out.println("Name:");
+        String nameClient = sc.nextLine();
+
+        System.out.println("CPF:");
+        String cpfClient = sc.nextLine();
+
+        System.out.println("Phone:");
+        int phoneClient = sc.nextInt();
+        sc.nextLine();
+
+
+        Client client = new Client(nameClient, phoneClient, cpfClient);
+
+        Service service = new Service(client);
+
+        laundryServices laundryServices = null;
+        while (true) {
+            try {
+                System.out.println("Type of wash: NORMAL / A_SECO / DELICADA");
+                String desc = sc.nextLine().toUpperCase();
+                laundryServices = laundryServices.valueOf(desc); // conversão segura
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid wash type. Try again.");
+            }
         }
+
+        service.chooseTypeOfWash(laundryServices);
+
+
+
+        System.out.println("How many pieces of clothing will you wash?");
+        int amountOfRepetition = sc.nextInt();
+        sc.nextLine();
+
+            for (int i = 0 ; i < amountOfRepetition ; i ++) {
+                System.out.println("Par type:");
+                String parTypeProduct = sc.nextLine();
+
+                System.out.println("color:");
+                String colorProduct = sc.nextLine();
+
+                System.out.println("mark:");
+                String markProduct = sc.nextLine();
+
+                Product product = new Product(markProduct, colorProduct, parTypeProduct);
+                PieceValue pieceValue = new PieceValue(product);
+
+                service.addProduct(pieceValue);
+            }
+
+        System.out.println(service.toString());;
+
+
+
+
+
     }
 }
