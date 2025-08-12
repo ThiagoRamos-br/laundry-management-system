@@ -6,6 +6,7 @@ import entities.Product;
 import entities.Service;
 import enums.laundryServices;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -32,6 +33,7 @@ public class Main {
         Service service = new Service(client);
 
         laundryServices laundryServices = null;
+
         while (true) {
             try {
                 System.out.println("Type of wash: NORMAL / A_SECO / DELICADA");
@@ -45,11 +47,18 @@ public class Main {
 
         service.chooseTypeOfWash(laundryServices);
 
+        int amountOfRepetition = 0;
 
-
+        try{
         System.out.println("How many pieces of clothing will you wash?");
-        int amountOfRepetition = sc.nextInt();
+        amountOfRepetition = sc.nextInt();
         sc.nextLine();
+        }  catch (InputMismatchException e) {
+            // excessão para  avisar se for escrito um codigo cm tipo primitivo incorreto
+            System.out.println("Invalid option!!!");
+        }
+
+
 
             for (int i = 0 ; i < amountOfRepetition ; i ++) {
                 System.out.println("Par type:");
