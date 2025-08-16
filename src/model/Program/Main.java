@@ -42,6 +42,8 @@ public class Main {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid wash type. Try again.");
+            } finally {
+                sc.close();
             }
         }
 
