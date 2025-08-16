@@ -7,14 +7,14 @@ public class Client {
 
     private Integer id;
     private String name;
-    private Integer phone;
+    private Long phone;
     private String cpf;
 
-    public Client () {
+    public Client (String nameClient, long phoneClient, String cpfClient) {
 
     }
 
-    public Client (String name, Integer phone, String cpf) {
+    public Client (String name, Long phone, String cpf) {
 
         this.cpf = cpf;
         this.name = name;
@@ -40,11 +40,11 @@ public class Client {
         this.name = name;
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

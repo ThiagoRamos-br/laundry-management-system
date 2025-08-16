@@ -1,6 +1,6 @@
 package model.entities;
 
-import enums.laundryServices;
+import model.enums.laundryServices;
 
 import java.util.ArrayList;
 import java.util.List;

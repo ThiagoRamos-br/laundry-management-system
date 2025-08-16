@@ -4,7 +4,7 @@ import model.entities.Client;
 import model.entities.PieceValue;
 import model.entities.Product;
 import model.entities.Service;
-import enums.laundryServices;
+import model.enums.laundryServices;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Main {
         String cpfClient = sc.nextLine();
 
         System.out.println("Phone:");
-        int phoneClient = sc.nextInt();
+        long phoneClient = sc.nextInt();
         sc.nextLine();
 
 
