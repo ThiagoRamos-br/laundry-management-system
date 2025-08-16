@@ -1,6 +1,4 @@
-package entities;
-
-import enums.laundryServices;
+package model.entities;
 
 public class Product {
 

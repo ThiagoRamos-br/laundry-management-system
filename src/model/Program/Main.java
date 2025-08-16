@@ -1,9 +1,9 @@
-package Program;
+package model.Program;
 
-import entities.Client;
-import entities.PieceValue;
-import entities.Product;
-import entities.Service;
+import model.entities.Client;
+import model.entities.PieceValue;
+import model.entities.Product;
+import model.entities.Service;
 import enums.laundryServices;
 
 import java.util.InputMismatchException;
@@ -58,31 +58,37 @@ public class Main {
         }  catch (InputMismatchException e) {
             // excessão para  avisar se for escrito um codigo cm tipo primitivo incorreto
             System.out.println("Invalid option!!!");
+        } finally {
+            sc.close();
         }
 
 
 
             for (int i = 0 ; i < amountOfRepetition ; i ++) {
-                System.out.println("Par type:");
-                String parTypeProduct = sc.nextLine();
+                try {
+                    System.out.println("Par type:");
+                    String parTypeProduct = sc.nextLine();
 
-                System.out.println("color:");
-                String colorProduct = sc.nextLine();
+                    System.out.println("color:");
+                    String colorProduct = sc.nextLine();
 
-                System.out.println("mark:");
-                String markProduct = sc.nextLine();
+                    System.out.println("mark:");
+                    String markProduct = sc.nextLine();
 
-                Product product = new Product(markProduct, colorProduct, parTypeProduct);
-                PieceValue pieceValue = new PieceValue(product);
 
-                service.addProduct(pieceValue);
+                    Product product = new Product(markProduct, colorProduct, parTypeProduct);
+                    PieceValue pieceValue = new PieceValue(product);
+
+                    service.addProduct(pieceValue);
+                }catch (InputMismatchException e) {
+                    System.out.println("Option Invalid");
+                } finally {
+                    sc.close();
+                }
             }
 
         System.out.println(service.toString());;
 
-
-
-
-
+        sc.close();
     }
 }
