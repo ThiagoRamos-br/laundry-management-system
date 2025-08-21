@@ -1,5 +1,7 @@
 package model.entities;
 
+import model.Exception.Domain.LaundryException;
+
 public class Client {
 
     private static int counter = 0;
@@ -15,6 +17,10 @@ public class Client {
     }
 
     public Client (String name, Long phone, String cpf) {
+
+        if (String.valueOf(phone).length() < 11) {
+            throw new LaundryException("The number must contain 10 digits, counting the dd and the 9 after it");
+        }
 
         this.cpf = cpf;
         this.name = name;

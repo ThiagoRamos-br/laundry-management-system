@@ -1,5 +1,6 @@
 package model.Program;
 
+import model.Exception.Domain.LaundryException;
 import model.entities.Client;
 import model.entities.PieceValue;
 import model.entities.Product;
@@ -23,12 +24,18 @@ public class Main {
         System.out.println("CPF:");
         String cpfClient = sc.nextLine();
 
-        System.out.println("Phone:");
-        long phoneClient = sc.nextInt();
-        sc.nextLine();
+        Client client = null;
 
+        try {
+            System.out.println("Phone:");
+            long phoneClient = sc.nextLong();
+            sc.nextLine(); // Adicionado para consumir a quebra de linha
 
-        Client client = new Client(nameClient, phoneClient, cpfClient);
+            client = new Client(nameClient, phoneClient, cpfClient);
+
+        } catch (LaundryException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
         Service service = new Service(client);
 
@@ -42,8 +49,6 @@ public class Main {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid wash type. Try again.");
-            } finally {
-                sc.close();
             }
         }
 
@@ -51,44 +56,35 @@ public class Main {
 
         int amountOfRepetition = 0;
 
-        try{
-        System.out.println("How many pieces of clothing will you wash?");
-        amountOfRepetition = sc.nextInt();
-        sc.nextLine();
-        }  catch (InputMismatchException e) {
-            // excessão para  avisar se for escrito um codigo cm tipo primitivo incorreto
+        try {
+            System.out.println("How many pieces of clothing will you wash?");
+            amountOfRepetition = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
             System.out.println("Invalid option!!!");
-        } finally {
-            sc.close();
         }
 
 
+        for (int i = 0; i < amountOfRepetition; i++) {
+            System.out.println("Par type:");
+            String parTypeProduct = sc.nextLine();
 
-            for (int i = 0 ; i < amountOfRepetition ; i ++) {
-                try {
-                    System.out.println("Par type:");
-                    String parTypeProduct = sc.nextLine();
+            System.out.println("color:");
+            String colorProduct = sc.nextLine();
 
-                    System.out.println("color:");
-                    String colorProduct = sc.nextLine();
-
-                    System.out.println("mark:");
-                    String markProduct = sc.nextLine();
+            System.out.println("mark:");
+            String markProduct = sc.nextLine();
 
 
-                    Product product = new Product(markProduct, colorProduct, parTypeProduct);
-                    PieceValue pieceValue = new PieceValue(product);
+            Product product = new Product(markProduct, colorProduct, parTypeProduct);
+            PieceValue pieceValue = new PieceValue(product);
 
-                    service.addProduct(pieceValue);
-                }catch (InputMismatchException e) {
-                    System.out.println("Option Invalid");
-                } finally {
-                    sc.close();
-                }
-            }
+            service.addProduct(pieceValue);
+        }
 
-        System.out.println(service.toString());;
+        System.out.println(service.toString());
 
+        // Apenas UMA chamada para fechar o scanner no final do programa
         sc.close();
     }
 }
