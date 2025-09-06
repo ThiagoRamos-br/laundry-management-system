@@ -48,7 +48,6 @@ public class PaymentService {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Client: " + client.getName() + "\n");
-        sb.append("ID: " + client.getId() + "\n");
         sb.append("Service chosen: " + laundryServices.getDescription() + "\n");
         sb.append("Products:\n"); // Adiciona uma quebra de linha antes da lista de produtos
         for (PieceValue i : pieceList) {

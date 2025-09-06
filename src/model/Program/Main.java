@@ -36,6 +36,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
+
         PaymentService service = new PaymentService(client);
 
         // --- INÍCIO: BLOCO ÚNICO E CORRETO PARA ESCOLHA DO SERVIÇO ---
