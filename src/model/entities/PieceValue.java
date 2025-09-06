@@ -13,6 +13,12 @@ public class PieceValue {
         this.product = product;
     }
 
+    // PieceValue.java
+    @Override
+    public String toString() {
+        return "Piece: " + product.getParType() + ", Color: " + product.getColor() + ", Mark: " + product.getMark() + ", Price: R$" + price;
+    }
+
     public Double getPrice() {
         return price;
     }
