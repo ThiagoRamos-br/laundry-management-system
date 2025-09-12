@@ -1,24 +1,64 @@
-﻿# laundry-management-system
-Este é um sistema simples de gerenciamento de lavanderia, desenvolvido em Java, para auxiliar no controle de serviços e clientes. O sistema permite o registro de clientes e peças de roupa, a escolha do tipo de lavagem e o cálculo do valor total do serviço.
+# Sistema de Gerenciamento de Lavanderia
 
-Tecnologias Utilizadas
+Este é um projeto simples em Java que simula o sistema de gerenciamento de uma lavanderia, permitindo o registro de clientes, a adição de peças de roupa e o cálculo do valor total do serviço. O projeto utiliza programação orientada a objetos para organizar as funcionalidades e garantir um código limpo e modular.
 
-Linguagem de Programação: Java
-Conceitos de Orientação a Objetos: Classes, objetos, herança, encapsulamento.
-Tratamento de Exceções: Uso de try-catch para lidar com erros de entrada do usuário e regras de negócio, como o formato do número de telefone.
-Enums: Para definir tipos de serviço de lavagem com valores e descrições fixas.
-Collections: Uso de ArrayList para armazenar as peças de roupa associadas a um serviço.
+---
 
-Funcionalidades
-O sistema oferece as seguintes funcionalidades principais:
-Cadastro de Clientes: Permite registrar um cliente com nome, CPF e telefone.
-Registro de Peças de Roupa: Cada peça de roupa é registrada com tipo (ex: calça, camisa), cor e marca.
-Seleção de Serviço: O usuário pode escolher entre os tipos de lavagem: Normal, A Seco e Delicada, cada um com um preço base diferente.
-Cálculo de Valor Total: O sistema calcula o valor total do serviço somando o preço de cada peça de roupa ao preço base do tipo de lavagem escolhido.
-Relatório Detalhado: Ao final, o sistema exibe um resumo completo do serviço, incluindo os dados do cliente e o valor total.
+## 🚀 Como Executar
 
-Como Executar
-Para rodar o projeto, você precisará de uma IDE Java como o Eclipse, IntelliJ IDEA ou VS Code com o ambiente configurado.
-Clone o Repositório: Se o projeto estiver em um repositório Git, clone-o para sua máquina local.
-Abra o Projeto na IDE: Importe a pasta do projeto para sua IDE.
-Execute a Classe Main.java: A partir da sua IDE, localize o arquivo Main.java e execute-o. O programa irá rodar no console, solicitando as informações do cliente e do serviço.
+Para rodar a aplicação, certifique-se de ter um ambiente de desenvolvimento Java (JDK) instalado.
+
+1.  **Clone o repositório:**
+    ```
+    git clone [URL_DO_SEU_REPOSITORIO]
+    ```
+2.  **Compile o projeto:**
+    ```
+    javac Main.java
+    ```
+3.  **Execute o programa:**
+    ```
+    java Main
+    ```
+
+---
+
+## ✨ Funcionalidades
+
+O programa oferece as seguintes funcionalidades principais:
+
+* **Registro de Clientes:** Permite registrar um novo cliente com nome, CPF e telefone.
+* **Adição de Peças:** Adiciona múltiplas peças de roupa ao serviço do cliente, com informações como tipo, cor e marca.
+* **Escolha do Serviço:** Permite selecionar o tipo de lavagem (Normal, A Seco, Delicada).
+* **Cálculo do Total:** Calcula o valor final do serviço somando o custo de todas as peças ao preço base do tipo de lavagem escolhido.
+* **Geração de Recibo:** No final da execução, um resumo do serviço é exibido, incluindo informações do cliente, tipo de serviço, produtos e o valor total.
+
+---
+
+## 📁 Estrutura do Projeto
+
+O projeto é organizado em pacotes para melhor separação das responsabilidades:
+
+* `model.Program`: Contém a classe principal (`Main.java`) que inicia a aplicação e interage com o usuário.
+* `model.entities`: Armazena as classes que representam as entidades do negócio:
+    * `Client.java`: Representa um cliente da lavanderia.
+    * `Product.java`: Representa uma peça de roupa.
+    * `PieceValue.java`: Associa um produto a um valor, permitindo calcular o custo de cada peça.
+* `model.enums`: Contém a classe `laundryServices.java`, um `enum` que define os tipos de serviços de lavagem disponíveis, cada um com sua descrição e preço base.
+* `model.Exception.Domain`: Contém a classe de exceção personalizada (`LaundryException.java`) para tratar erros específicos do domínio da aplicação.
+* `model.Service`: Contém a classe `PaymentService.java` que gerencia toda a lógica de negócio do pagamento, incluindo a lista de peças e o cálculo do valor total.
+* `model.Service.ServiceInterface`: Uma interface para definir os contratos do serviço.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Java:** Linguagem de programação principal.
+* **Orientação a Objetos (POO):** Usada para estruturar o código de forma modular e reutilizável.
+* **Manipulação de Exceções:** Implementada para lidar com entradas inválidas e outras falhas.
+
+---
+
+## ✒️ Autor
+
+Seu Nome
